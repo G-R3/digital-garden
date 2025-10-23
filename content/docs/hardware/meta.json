@@ -1,3 +1,4 @@
 {
+  "root": true,
   "pages": ["index", "---Topics---", "..."]
 }
