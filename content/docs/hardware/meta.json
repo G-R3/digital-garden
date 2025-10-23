@@ -1,4 +1,5 @@
 {
   "root": true,
-  "pages": ["index", "---Topics---", "..."]
+  "pages": ["index", "---Topics---", "..."],
+  "icon": "Microchip"
 }
