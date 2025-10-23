@@ -1,10 +1,19 @@
 import "@/app/global.css";
 import { RootProvider } from "fumadocs-ui/provider/next";
+import { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
 });
+
+export const metadata: Metadata = {
+  title: "Garden",
+  description: "A digital garden for my thoughts and ideas",
+  icons: {
+    icon: "/vibes.webp",
+  },
+};
 
 export default function Layout({ children }: LayoutProps<"/">) {
   return (
