@@ -10,15 +10,12 @@ interface TopicInfo {
   description?: ReactNode;
 }
 
-// Helper function to find a node in the page tree by its full path
 const findNodeByPath = (children: Node[], slug: string): Node | null => {
   for (const child of children) {
-    // Check if this child's $id matches our slug
     if (child.$id === slug) {
       return child;
     }
 
-    // If this is a folder, recursively search its children
     if (child.type === "folder") {
       const found = findNodeByPath(child.children, slug);
       if (found) return found;
@@ -28,17 +25,13 @@ const findNodeByPath = (children: Node[], slug: string): Node | null => {
   return null;
 };
 
-// Get all topics (pages and folders) under a given parent node
 const getTopicsUnderNode = (node: Node): TopicInfo[] => {
   if (node.type !== "folder") return [];
 
-  // Get the index URL to exclude it from the list
-  const indexUrl = node.index?.url;
   const topics: TopicInfo[] = node.children
     .map((child): TopicInfo | null => {
       if (child.type === "page") {
-        // Skip if this is the index page (either by URL match or by checking if $id ends with /index.mdx)
-        if (child.url === indexUrl || child.$id?.endsWith("/index.mdx")) {
+        if (child.$id?.endsWith("/index.mdx")) {
           return null;
         }
 
@@ -49,7 +42,6 @@ const getTopicsUnderNode = (node: Node): TopicInfo[] => {
         };
       }
       if (child.type === "folder") {
-        // For folders, use the index page if it exists
         const firstChild = child.children[0];
         const url =
           child.index?.url ||
@@ -70,7 +62,6 @@ const getTopicsUnderNode = (node: Node): TopicInfo[] => {
 };
 
 export function FurtherReadings({ slug }: { slug: string }) {
-  // Find the node in the page tree by its full path
   const node = findNodeByPath(source.pageTree.children, slug);
 
   if (!node || node.type !== "folder") return null;
