@@ -10,6 +10,7 @@ import { getMDXComponents } from "@/mdx-components";
 import type { Metadata } from "next";
 import { createRelativeLink } from "fumadocs-ui/mdx";
 import { FurtherReadings } from "@/components/further-readings";
+import Image from "next/image";
 
 export default async function Page(props: PageProps<"/[[...slug]]">) {
   const params = await props.params;
@@ -28,6 +29,16 @@ export default async function Page(props: PageProps<"/[[...slug]]">) {
             // this allows you to link to other pages with relative file paths
             a: createRelativeLink(source, page),
             FurtherReadings: FurtherReadings,
+            // Vibes: () => (
+            //   <span className="inline-block relative w-8 h-8 rounded-lg">
+            //     <Image
+            //       src="/vibes.webp"
+            //       alt="Vibes"
+            //       fill
+            //       className="object-cover rounded-lg object-center mt-1! mb-0!"
+            //     />
+            //   </span>
+            // ),
           })}
         />
       </DocsBody>
