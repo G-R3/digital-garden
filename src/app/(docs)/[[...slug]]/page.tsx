@@ -10,7 +10,6 @@ import { getMDXComponents } from "@/mdx-components";
 import type { Metadata } from "next";
 import { createRelativeLink } from "fumadocs-ui/mdx";
 import { FurtherReadings } from "@/components/further-readings";
-import Image from "next/image";
 
 export default async function Page(props: PageProps<"/[[...slug]]">) {
   const params = await props.params;
