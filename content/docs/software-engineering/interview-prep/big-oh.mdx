@@ -9,7 +9,7 @@ Big-Oh cheat sheet: https://www.bigocheatsheet.com/
 Big-Oh notation is a way to categorize your algorithms on time and space complexity based on input. its not meant to be an exact
 measurement. No one will be saying something like "your algorithms is going to 100% take 450 CPU units". Its generalized way to be able to understand how a particular algorithm will react as your input grows.
 
-Basically, as your input grows how fast does your computation or memery grow.
+Basically, as your input grows how fast does your computation or memory grow.
 
 So, if something is `O(N)` it means that your algorithms grows linearly with input.
 
@@ -30,19 +30,21 @@ Easiest way to tell the big-oh of anything is to look for loops.
    - we are not trying to get exact measurements. We just need to know generally know if something will halt our computers or be fast.
 3. Always consider the worst case, usually.
 
-"Obviously in the real world, this is not a real trade off in the sense that dependingon the size of data you use, depending on how much memory you have to allocatedepending on the GC pressure, these things are not necessarily free trade offs.You can't really trade time for memory, because it takes time to create memory.So if you create a linear amount of memory in some sense your algorithm is boundby how much memory you create. So it's not necessarily for free."
+> Obviously in the real world, this is not a real trade off in the sense that dependingon the size of data you use, depending on how much memory you have to allocatedepending on the GC pressure, these things are not necessarily free trade offs.You can't really trade time for memory, because it takes time to create memory.So if you create a linear amount of memory in some sense your algorithm is boundby how much memory you create. So it's not necessarily for free.
 
 ## Drop the constant
 
+```
 N = 1, `O(10N)` = 10, `O(N^2)` = 1
 N = 5, `O(10N)` = 50 `O(N^2)` = 25
-N = 100, `O(10N)` = 1,000 `O(N^2)` = 10,000 //10x bigger
-N = 1000, `O(10N)` = 10,000 `O(N^2)` = 1,000,000 //100x bigger
-N = 10000, `O(10N)` = 100,000 `O(N^2)` = 100,000,000 //1000x bigger
+N = 100, `O(10N)` = 1,000 `O(N^2)` = 10,000 // 10x bigger
+N = 1000, `O(10N)` = 10,000 `O(N^2)` = 1,000,000 // 100x bigger
+N = 10000, `O(10N)` = 100,000 `O(N^2)` = 100,000,000 // 1000x bigger
+```
 
-for smaller input size, `O(N^2)` beats out `O(N)`. As N grows, N^2 gets massively larger and it grows disproportionately faster in comparison to no matter whatconstant is in front of the linear Of N.
+for smaller input size, `O(N^2)` beats out `O(N)`. As N grows, N^2 gets massively larger and it grows disproportionately faster in comparison to no matter what constant is in front of the linear Of N.
 
-^ There are practical vs. theorritcal differences
+^ There are practical vs. theorritcal differences to the above.
 
 - just because `O(N)` is faster then `O(N^2)`, doesn't mean practically its always faster for smaller inputs
 - remember we drop constant. So, `O(100N)` is faster than `O(N^2)` but practically speaking, you would probably win for some small set of inputs.
@@ -69,7 +71,7 @@ function sumCharCode(n: string): number {
 
 best case: `O(1)`
 worst case: `O(N)`
-in this example, the best case is `O(1)`. it could be that the first character is a capital E. Worst case is `O(N)`. It could be that capital E is not within the string and so we would have traversed the entire string. It could be that the capital E is one unit from the end or two units from the end. This would mean `O(N-2)` but we drop constants which is just `O(N)`.
+in this example, the best case is `O(1)`. it could be that the first character in our string is a capital E. Worst case is `O(N)`. It could be that capital E is not within the string and so we would have traversed the entire string. It could be that the capital E is one unit from the end or two units from the end. This would mean `O(N-2)` but we drop constants which is just `O(N)`.
 It doesn't matter where the "E" is. The beginning, middle, end, and if its one-half-end its still N
 
 ## Common complexities
@@ -89,9 +91,9 @@ It doesn't matter where the "E" is. The beginning, middle, end, and if its one-h
   - go through each item once
   - loops and traversing through lists.
 - `O(NlogN)`
-  - typically when ever we are splitting the input
-  - quicksort. We half the amount of space we need to search but we need to search that space once everytime
-    - we go over N characters, we half how much we need look at. Then we go over N characters, we half again. repeat.
+  - typically whenever we are splitting the input
+  - quicksort. We half the amount of space we need to search but we need to search that chunk of space once everytime
+    - we go over N characters, we half how much we need look at. Then we go over those N characters, we half again. repeat.
   - almost always related to sorting and that includes the default sort methods built into most programming languages
 - `O(N^2)`
   - nested loops
