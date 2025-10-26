@@ -1,0 +1,50 @@
+---
+title: Strings
+description: Strings data type
+---
+
+Strings are basically just arrays of characters
+
+```typescript
+let string = "Hello"; // ["H", "e", "l", "l", "o"];
+```
+
+In most languages, strings are immutable. This means that when we modify a string, we are not modfying the orignal. We create a new one under the hood.
+
+```typescript
+let originalString = "hello"; // ["h", "e", "l", "l", "o"]
+let modifiedString = originalString + "!"; // ["h", "e", "l", "l", "o", "!"]
+```
+
+This can have some performance implications. For example, say we are building a result string. A common mistake is to iterate over the string and concat the result with the current character of the iteration. This can lead to an `O(N^2)` time complexity
+
+```typescript
+let result = "";
+for (char in string) {
+  result += char;
+}
+```
+
+under the hood, this is creating a new string on every iteration
+Instead we should be creating a list of characters and joining them at the end. This gets us back to `O(N)`
+
+```typescript
+let result = [];
+for (char in string) {
+  result.append(char);
+}
+
+return result.join("");
+```
+
+Aside from this, strings work very similarly to arrays.
+
+## When to use
+
+- Find the longest substring without repeating characters
+- Check if two strings are anagrams
+- Return all the subtrings that match a patter
+
+^ most of these are hidden as sliding window or two pointer problems
+
+String problems are almost never about brute force character checking. They are about smart windowing, smart lookups, and efficient traversal.

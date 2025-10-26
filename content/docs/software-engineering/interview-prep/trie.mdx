@@ -1,0 +1,48 @@
+---
+title: Trie
+description: Trie data structure
+---
+
+Pronounced as "try", is a type of tree buts its often used to store characters. Also known as a prefix tree.
+
+each node might store a character as its data and by following the path from the root to a given node, that
+node is representing a word or a part of a word
+
+Gives us very quick lookups of a particular kind
+
+Take this dictionary as an example of words we store:
+
+```
+Car
+Card
+Cards
+Cot
+Cots
+Trie
+Tried
+Tries
+Try
+```
+
+We can use a trie to say "Hey are there any words that start with 'c', 'a', and 'r'?"
+yes there are. We have "car" which is a complete word. There is also "card" in which "car" is also a prefix.
+
+Tries are great for word validation problems
+
+- "Given this list of strings find all celebrity names"
+- "Imagine that you're implementing autocomplete for a video search engine..."
+
+don't look up each prefix from the root. instead, build from past cells
+by keeping state within the trie or returning the node to the caller.
+
+## Operations
+
+#### Insert -> `O(N)`
+
+- N is the length of the word
+
+## When to use
+
+- word search
+- prefix matching
+- auto complete

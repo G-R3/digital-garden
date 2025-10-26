@@ -1,0 +1,91 @@
+---
+title: Hash Maps
+description: Hash Map data structure
+---
+
+A way to store data using a key-value pair system.
+
+> When in doubt, use a hash map
+
+## Operations
+
+#### Access -> `O(1)`
+
+#### Insert -> `O(1)`
+
+If you are given a key, like banana. Run it through a hash function that will spit out some number and that number will point to a value in memory. That is where our value is stored. Don't need to scan keys or sort anything. We just ask "where does this key go?" and the hash function gives us an immediate answer.
+
+they don't depend on the size of the data. Getting/setting a value takes the same amount of time.
+
+two keys might get the same hash. This is called hash collission and most languages have hash map implementations that handle these collisions.
+
+## Keys
+
+keys must be hashable. This meaning differ depending on the language but in general:
+
+Hashable
+
+- numbers
+- strings
+- tuples
+
+Not Hashable
+
+- lists
+- dictionaries
+
+Hash maps need keys that stay the same and for lists/dictionaries the content can change.
+
+---
+
+Hash maps are the go-to structure when brute forcing is too slow
+
+For example, finding a value that already exists. Without a hashmap we would need to loop through everything we've seen so far which is `O(N)`. Using a hash map we just need to check once `O(1)`
+
+for interviews, the real trick isn't some clever algorithm. Its just storing information in a smart and efficient way. A hash map can give us that for free
+
+When we are solving problems in brute force, we are asking the same questions over and over again.
+When we solve problems with a hash map, we are remembering the answers as we go.
+
+This unlocks `O(N)` solution where others get stuck at `O(N^2)`
+
+## Patterns
+
+with hash maps you are usually always:
+
+1. Storing something
+2. Looking something up
+3. Updating/initializing values
+
+4. Frequency map
+
+```python
+my_map = {}
+for item in data:
+    if item not in my_map:
+        my_map[item] = 1
+    else:
+        my_map[item] += 1
+```
+
+Storing something under a key and retrieving/updating it later.
+Also, hash maps are usually often used while we loop not just after. So we are building and using the map in realtime. This lets us write a one-pass solution instead of needing to loop twice.
+
+1. initialize a map
+2. use it while we loop
+3. get fast loop up and storage
+
+## When to use
+
+- string problems
+- array problems
+- recursion
+- dynamic problems
+- graph traversal
+- literally everything
+
+if you're stuck and don't know how to avoid brute force, just ask "what can i store to avoid doing extra work later?".
+
+Hash maps are a greate data structure for answering "Have a seen the corresponding value to complete this pair?"
+
+- take the Two Sum problem as an example, we want to find a number that adds to the current number that will add to the target value.

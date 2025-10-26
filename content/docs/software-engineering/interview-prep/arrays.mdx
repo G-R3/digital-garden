@@ -1,0 +1,54 @@
+---
+title: Arrays
+description: Arrays data structure
+date: 2025-10-11
+---
+
+> most of these notes are referring to traditional non-dynamic arrays
+
+Stores collections of elements, usually of the same type, in a contigous block of memory.
+
+- contigous meaning unbreaking which contains a certain amount of bytes.
+- `int[3]` We want 3 integers in contigous space for us to use.
+
+## Characteristics
+
+- Stores elements of the same type
+- Each element in the array has a unique index, usually starting from 0.
+- Array elements are stored in consecutive memory locations, which allows for efficient access and memory management
+- Fixed size and size must be given at initialization. This differ depending on language
+
+## Operations
+
+#### Accessing -> `O(1)` constant time by index
+
+- Because arrays are stores as a contigous block of memory and each element is given an index pointing to its location, we can read a specific element in constant time. No need to traverse the array.
+- the memory location can be directly calculated without iterating through the entire array
+
+#### Insert/remove at the end -> `O(1)`
+
+- if the array has enough memory allocated, appending to the end is O(1). If there is not enough memory, we'll need to copy the array into a new array with more memory allocated, that operation is O(N)
+
+#### Insert/remove at the beginning or middle -> `O(N)`
+
+- inserting at the beginning means we'll need to shift every element one position to the right.
+- removing also means we'll need to shift everything one position to the left to fill the gap.
+
+when we are inserting into an array we are not necessarily inserting, just overwriting. We do not get to grow the array into more memory. If we could, it could cause accidental overwrites of neighboring blocks of memory outside the bounds of the array block.
+
+> Arrays cannot dynamically grow in memory. Insertion typically overwrites existing elements, and attempting to expand beyond the original memory allocation could overwrite adjacent memory locations
+
+Deletion works in a similar way. We don't just delete something out of contigous memory, we overwrite it with something like zero. Its up to the program to then interpret that value.
+
+> Deletion typically involves setting the element to a sentinel value like zero, but does not actually remove the memory space. The programmer must manage how deleted elements are interpreted
+
+## When to use
+
+- Traverse a structure in order
+- Access specific indices
+- Comparing elements from both ends
+- Sliding window, prefix, etc.
+
+> Fundamental definition of an array in terms of computer memory: A contiguous memory space containing zero or more pieces of memory understood as a single type in a row, where elements can be accessed by calculating memory offset based on type size and inde
+
+> What determines how memory is interpreted in an array?: The type of view or interpretation applied to the memory, such as an 8-bit unsigned integer view versus a 16-bit unsigned integer view, which can change how the same memory bytes are understood

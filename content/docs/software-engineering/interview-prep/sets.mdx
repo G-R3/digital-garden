@@ -1,0 +1,37 @@
+---
+title: Sets
+description: Set data structure
+---
+
+A collection of unique values. No duplicates no particular order. A group of element where each one only appears once
+
+## Operations
+
+Here i'm referring to Hash Sets which are typically implemented using hash tables
+
+#### Accessing -> `O(1)`
+
+- We can quickly find an element by hashing its value.
+
+#### Removing -> `O(1)`
+
+- only need to hash the element to find and remove it
+
+#### Insert -> `O(1)`
+
+- since Sets are typically implemented using hash tables, we can read in constant time
+- check emptiness -> `O(1)`
+
+## When to use
+
+You should always use a Set instead of an Array when you care about:
+
+- Uniqueness (Like checkin for duplicates)
+- Existance (Have i seen this element before?)
+- Fast membership check (Is this element in this group)
+
+In a problem where we scanning an array to find the first repeated element, using a Set is usually the cleanest and fastest solution
+
+- Sliding window problems (you'd want to make sure all elements on the window are unique. In that way a set becomes a way to track whats in-play and what need to be removed)
+
+Sets are NOT for storing `key: value` pairs. They are for tracking if something exists(?).
