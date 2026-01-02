@@ -15,3 +15,11 @@ Try this: attach an LED to the two leads of a motor, then spin the shaft with yo
 When we stop supplying the motor with electricity, it will continue to spin because it has inertia. When it's spin like this it will generate voltage in the opposite direction than the current that it was given.
 
 This reverse voltage, sometimes called `back-voltage`, can damage your components like `transistors`. To mitigate you can put a `diode`in parallel with the motor so that `back-voltage` passes through the `diode`.
+
+- Motors have an optimal operating voltage. They can work on a little as 50% of the rated voltage and as much as 50% over that number.
+
+- If you vary the voltage of a motor, say via a potentiometer, you change the speed at which the motor rotates.
+
+  - Don't vary it too much otherwise it will burn out the motor!!
+
+- Motors require special consideration when being controlled by a microconntroller. Typically the microconntroller is not able to provide the motor with sufficient current and/or voltage to power it. Because of this we use `Transistors` to interface between the motor and microconntroller (and a `Diode` to prevent `back-voltage` from damaging circuit).
