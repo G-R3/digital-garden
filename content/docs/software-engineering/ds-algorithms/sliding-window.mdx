@@ -1,0 +1,83 @@
+---
+title: Sliding Window
+description: Sliding Window patterns
+date: 2025-10-11
+---
+
+An extension of the two pointer technique but instead of tracking just two positions, we are managing an entire range of values.
+This range is your window. As the name suggest, you'll be sliding this range accross the data structure to inspect/process different
+segments of it, without retraversing the same data over and over.
+
+imagine you have a scanner and you are dragging it accross a lot of text. The scanner starts small and grows as you move forward or maybe shrinks
+depending on what you're looking for. At any given moment, we're only interested at whats inside the window. We don't care about anything before or after it.
+
+we are looking at a subset of the data, adjusting the windows as needed, and never revisiting the same element twice. That last part, never revisiting the same element twice, is key.
+
+Just like two pointer this give us a way to reduce time complexity to O(N), even when the problem feels like it should require nested loops.
+
+## Two major types of techniques
+
+### Fixed size
+
+The size of the window is predetermined and stay the same throughout. In these problems the window size never changes and always includes K elements.
+As you slide the window through the data, you add one new element from the right and remove one element from the left and keeping the window size constant.
+
+They key is maintaining a running window and at every step updating the window based on the current content of the window.
+
+```python
+def sliding_window_fixed(input, window_size):
+    ans = window = input[0:window_size];
+    for right in range(window_size, len(input)):
+        left = right - window_size
+        remove input[left] from window
+        append input[right] to window
+
+        ans = optimal(ans, window) ## update answer based on the problem is asking. max, min, sum, avg.
+
+    return ans
+```
+
+#### When to use
+
+Used when the problem gives you a fixed window size. Usually with language like:
+"Find the maximum avergage of any subarray of size k".
+"Return the sum of every k-length block"
+"Find the subarray of length k with the largest/smallest X"
+
+### Dynamic window
+
+the window can shrink and expand as necessary. Window size is not fixed . More flexible and powerful.
+
+The window grows and shrinks depending on the data.
+**_We expand the window to include more elements and once the condition is violated we start to
+shrink it from the left until it becomes valid again_**
+
+This gives us complete control, we are not just sliding it accross but also adjusting it in real-time to maintain the right conditions.
+
+```python
+def sliding_window_flexible_longest(input):
+    window, ans
+    left = 0
+
+    for right in range(len(input)):
+        append input[right] to window
+        while invalid(window)           ## update left until window is valid again
+            remove input[left] from window
+            left += 1
+        ans = max(ans, window)          ## window is guaranteed to be valid here
+
+    return ans
+```
+
+We start with an empty window and grow it one element at a time from the right. Everytime we add a new element we check if the window is still valid. Once its valid we update the answer. This usually means tracking the characters in the window to see if meet some condition. If the window is invalid we start removing elements from the left and shrinking the window until it becomes valid again.
+
+#### When to use
+
+Used when trying to find the largest, smallest, or optimal range that satisfies some condition.
+"Find the length of the longest substring with at most K unique characters"
+"What's the smallest subarray with a sum greater than a targer?"
+"Return the longest window where a certain rule is valid"
+
+## When to use
+
+- if a problem is asking about contigous segments like substring, subarray, or a group of consecutive elements.
