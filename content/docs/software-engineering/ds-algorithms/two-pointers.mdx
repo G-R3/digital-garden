@@ -1,0 +1,72 @@
+---
+title: Two pointers
+description: Two pointer patterns
+date: 2025-10-11
+---
+
+Two pointers is great for solving problems that involve linear structures like arrays, strings, and even linked lists sometimes.
+
+the key is to recognize when to use it and how to adapt it to the shape of your problem.
+
+two pointers involves using two pointers, or indices, to move through a structure. Usually in a way to help you avoid nested loops
+or repeated scanning. Like reading a book with two fingers. One track the start of something and the other tracks the end.
+
+The trick is in how they move and why.
+
+## Two major types of techniques
+
+### Same direction
+
+both pointers move in the same direction
+
+#### When to use
+
+- Use it when doing a single pass over the data but you need to track a range and not just one element at a time.
+
+- fast and slow two pointer set up. One pointer moving one step at a time and the other moving fast, two steps at a time. This lets you detect patterns in a single pass. For example, if the fast pointer reaches the end while one is halfway, you found the middle. If the fast pointer ever laps the slow pointer, you've detected a cycle.
+
+### Opposite ends
+
+pointers move towards each other from opposite ends
+One starts at the beginning and the other at the end.
+
+here is the mental model:
+
+- left pointer starts at zero. right pointer start at the last index.
+- check the current pair
+- based on some condition you move one of the pointers inwards
+  - the condition is always problem specific. So it could be their sum or checking if the two characters match.
+
+Opposite ends is great with sorted arrays because each time you move a pointer you can remove an entire range of possabilities. Instead of checking all combinations, O(N^2), you're solving it in O(N).
+
+#### When to use
+
+- when finding pairs or combinations in a sorted array
+- Comparing symmetric parts of a structure. Checking for palindromes
+- Want to avoid nested loops when looking at all pairs.
+
+---
+
+Two pointers are great because they help:
+
+- reduce the number of iterations you'll need
+- track a relationship between two places in a structure
+- avoid extrac space by not needing Sets or Maps
+
+its one of a few techniques to maximize time and space complexity at once.
+
+you just need to recognize the shape of the problem
+
+## When to use
+
+- Palindromes
+- reversals
+- merging sorted data
+- "K" sized comparisons
+
+often the problem won't say to use Two pointers but if the brute force solution is checking all pairs or scanning repeatedly. Its usually a sign that
+theres is a more efficient way.
+
+You should be asking yourself this: "Can i do this by just walking the array once from both side or in one pass?"
+
+- if yes, two pointers is probably the most efficient way to go.
