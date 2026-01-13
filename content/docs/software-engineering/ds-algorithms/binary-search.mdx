@@ -1,0 +1,99 @@
+---
+title: Binary search
+description: Notes on binary search
+---
+
+A way to to take a big problem and cut it in half over and over again until we've reached an answer.
+
+Given a list, instead of scanning an array from start to end, which would take `O(N)`, Binary search will
+give us a runtime of `O(logN)`
+
+much more powerful than just searching a number
+
+### Intuition
+
+Given a range of numbers from 1 to 80. You have to guess a number in the least amount of moves. Each time you guess, you're told if its too high or too low. The first guess would be 40 because its in the middle and it automatically eliminates half the answers. Based on this answer, you make another guess and cut the range in half again, and again, and so on until you find your answer. Thats binary search. Each guess eliminates half the answers. This gives us `O(logN)` time.
+
+### Monotonic condition
+
+You don't necessarily need a sorted array for binary search to work. All we really need is a `Monotonic Condition`,
+
+a `Monotonic Condition` only ever changes in one direction. If its increasing, it will never decrease. If its dereasing it won't ever increase.
+
+Given this condition, we can make definitive claims about what happens after a certain point. Given a X in an increasing list of numbers. In a monotonic condition we can be sure that everything to the left of X is less than X and everything to its right is greater than X. In a non-monotonic list, we can't be sure of this because some may be smaller or larger.
+
+Examples of Monotonic conditions
+
+- sorted array
+- function that returns a boolean and transitions from returning False to only ever returning True. Binary search could help us find the first occurence of True in `O(logN)` time as long as we can write a feasible function that can aswer if an index is valid.
+  - comes up a lot on problems where we are not given a sorted array but are trying to min/max something and we can check if a solution if valid for a given guess
+
+```python
+# vanilla implementation
+def binary_search(arr: List[int], target: int) -> int:
+    # left start at beginning of list, right at the end of list
+    # these define our current search range
+    left, right = 0, len(arr) - 1
+
+    # loops continue whilst we still have something to search
+    # meaning our left pointer has not passed our right
+    # once they cross, we've exhausted the search space. We've searched the entire array
+    while(left <= right):
+        # calculate the middle index of our current search range
+        # in python, //, is integer division which will give us a whole number
+        mid = (left + right) // 2
+
+        # we've found the target
+        if arr[mid] == target:
+            # returns the targets index
+            return mid
+        # if the middle element is less than the target
+        # that means the target is to the right of mid
+        # so we discard the left half, including mid, and move our left pointer, mid + 1.
+        elif arr[mid] < target:
+            left = mid + 1
+        # else if the middle element is greater than target
+        # that means the target is to the left of mid
+        # so we discard the right half, including mid, and move our right pointer, mid -1 1
+        else:
+            right = mid - 1
+
+    # if we reach here, we've search the entire list and did not find the target
+    return -1
+```
+
+```python
+# feasible implementation
+def binary_search(arr: List[int], target: int) -> int:
+    # left start at beginning of list, right at the end of list
+    # these define our current search range
+    left, right = 0, len(arr) - 1
+
+    # keep track of the best candidate we've seen so far
+    # if we find a position that returns true. We store it here
+    # but we keep searching left to see if there is an even earlier occurence
+    first_true_index = -1
+
+    # loops continue whilst we still have something to search
+    # meaning our left pointer has not passed our right
+    # once they cross, we've exhausted the search space. We've searched the entire array
+    while(left <= right):
+        # calculate the middle index of our current search range
+        # in python, //, is integer division which will give us a whole number
+        mid = (left + right) // 2
+
+        # unlike vanilla, we are not comparing values directly
+        # we check if this mid point value satisfies some condition
+        # we are asking "is this index good enough?"
+        if feasible(mid):
+            # this mid is "good enough" and we store it as a possible answer
+            # and then move left in-case their is an earlier index that also works
+            first_true_index = mid
+            right = mid - 1
+        # if mid is not feasible we discard and move right
+        else:
+            left = mid + 1
+
+    # return the best answer we found. Will be -1 if nothing was ever feasible.
+    return first_true_index
+```
