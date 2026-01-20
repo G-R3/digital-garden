@@ -81,3 +81,22 @@ Used when trying to find the largest, smallest, or optimal range that satisfies 
 ## When to use
 
 - if a problem is asking about contigous segments like substring, subarray, or a group of consecutive elements.
+
+
+#### Additional language i came accross that hinted at sliding window
+- "substring"
+- "subarray"
+- "max subarray"
+- "max number of X in a substring of given length"
+- "max consecutive X"
+- "longest subarray of X's after Some condition
+
+^ usually the above are accompanied by some variable, k, which will be the length of our window. This hints that its a fixed sized window. Look out for things like: 
+    - "Find a contiguous subarray whose length is equal to `k`", 
+    - "return the maximum number of vowel letters in any substring of s with length `k`"
+    - "return the maximum number of consecutive 1's in the array if you can flip at most `k` 0's"
+    
+^ if no k value is given then its likely a condition to check in which case it's a dynamic window:
+    - "Return the size of the longest non-empty subarray containing only 1's in the resulting array."
+
+^ You don't necessarily need to have a variable dedicated to whats on the window, you just have to update pointers correctly.  
