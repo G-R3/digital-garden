@@ -1,0 +1,84 @@
+---
+title: Recursion
+description: Notes on recursion
+---
+
+Essentially, when a function calls itself until it doesn't
+
+Example:
+
+```js
+function countDownFrom(num) {
+  // stop condition. Without this this would run forever
+  // and result in a callstack `maximum call stack size exceeded` error
+  if (num >= 1) return;
+
+  console.log(num);
+  countDownFrom(num - 1);
+}
+
+countDownFrom(10);
+// 10
+// 9
+// 8
+// ...
+// 1
+```
+
+For this example, we could've used a simple for-loop to get the same result. Everytime we do a loop, we can use recursion instead. This doesn't work the other way around. There aren't things that recursion can do that loops can't
+
+Another example:
+
+```js
+let categories = [
+  { id: "animals", parent: null },
+  { id: "mammals", parent: "animals" },
+  { id: "cats", parent: "mammals" },
+  { id: "dogs", parent: "mammals" },
+  { id: "chihuahua", parent: "dogs" },
+  { id: "labrador", parent: "dogs" },
+  { id: "persian", parent: "cats" },
+  { id: "siamese", parent: "cats" },
+];
+```
+
+Given the categories, we want to transform the dataset to look like this:
+
+```js
+{
+    animals: {
+        mammals: {
+            dog: {
+                chihuahua: null,
+                labrador: null,
+            }
+            cats: {
+                persian: null,
+                siamese: null,
+            }
+        }
+    }
+}
+```
+
+A tree structure. Likes folders. We have a root folder and under thay folder we can click subfolder to reveal nested files. A hierarchy.
+
+This is a solution to that using recursion:
+```js
+
+let makeTree = (categories, parent) => {
+  let node = {};
+
+  categories
+    .filter((c) => c.parent === parent)
+    .forEach((c) => {
+      node[c.id] = makeTree(categories, c.id);
+    });
+
+  return node;
+};
+
+console.log(JSON.stringify(makeTree(categories, null), null, 2));
+```
+
+You could probably do this with loops. You maybe use nested-loops or something.
