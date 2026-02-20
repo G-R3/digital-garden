@@ -48,7 +48,7 @@ for smaller input size, `O(N^2)` beats out `O(N)`. As N grows, N^2 gets massivel
 
 - just because `O(N)` is faster than `O(N^2)`, doesn't mean practically it's always faster for smaller inputs
 - remember we drop constant. So, `O(100N)` is faster than `O(N^2)` but practically speaking, you would probably win for some small set of inputs.
-- for example, insertion sort, which is `O(N^2)`, is faster than something like quicksort, `O(log N)`, when we are dealing with smaller datasets
+- for example, insertion sort `O(N^2)` can be faster than quicksort (`O(N log N)` average, `O(N^2)` worst case) when dealing with smaller datasets.
 
 ## Consider the worst case
 
