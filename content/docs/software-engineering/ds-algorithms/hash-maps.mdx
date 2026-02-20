@@ -17,11 +17,11 @@ If you are given a key, like banana. Run it through a hash function that will sp
 
 they don't depend on the size of the data. Getting/setting a value takes the same amount of time.
 
-two keys might get the same hash. This is called hash collission and most languages have hash map implementations that handle these collisions.
+two keys might get the same hash. This is called hash collision and most languages have hash map implementations that handle these collisions.
 
 ## Keys
 
-keys must be hashable. This meaning differ depending on the language but in general:
+keys must be hashable. The meaning differs depending on the language but in general:
 
 Hashable
 
@@ -73,7 +73,7 @@ Also, hash maps are usually often used while we loop not just after. So we are b
 
 1. initialize a map
 2. use it while we loop
-3. get fast loop up and storage
+3. get fast lookup and storage
 
 ## When to use
 
@@ -86,6 +86,6 @@ Also, hash maps are usually often used while we loop not just after. So we are b
 
 if you're stuck and don't know how to avoid brute force, just ask "what can i store to avoid doing extra work later?".
 
-Hash maps are a greate data structure for answering "Have a seen the corresponding value to complete this pair?"
+Hash maps are a great data structure for answering "Have I seen the corresponding value to complete this pair?"
 
 - take the Two Sum problem as an example, we want to find a number that adds to the current number that will add to the target value.

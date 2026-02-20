@@ -4,22 +4,22 @@ description: notes on Motors
 ---
 
 - Motors require a lot of current, sometimes more than what a microcontroller pin can supply.
-- Motors can generate their own current through a process call `induction`, which can damage circuits if this is not plan for.
+- Motors can generate their own current through a process called `induction`, which can damage circuits if this is not planned for.
 
-a motor, It can generate its own electrical current through induction. When its given electricity, a tighly wound coil inside the housing of copper creates a magnetic field. This field causes the shaft (the part that sticks out of the housing) to spin around.
+A motor can generate its own electrical current through induction. When it's given electricity, a tightly wound coil inside the housing of copper creates a magnetic field. This field causes the shaft (the part that sticks out of the housing) to spin around.
 
-The reverse is also true. A motor can generate electricity when the shaft is spin around.
+The reverse is also true. A motor can generate electricity when the shaft is spun around.
 
-Try this: attach an LED to the two leads of a motor, then spin the shaft with your hands. If nothing happens spin the shaft the other way. The LED should light up. This essentilly create a tiny generator out of the motor!!!
+Try this: attach an LED to the two leads of a motor, then spin the shaft with your hands. If nothing happens spin the shaft the other way. The LED should light up. This essentially creates a tiny generator out of the motor!!!
 
-When we stop supplying the motor with electricity, it will continue to spin because it has inertia. When it's spin like this it will generate voltage in the opposite direction than the current that it was given.
+When we stop supplying the motor with electricity, it will continue to spin because it has inertia. When it's spinning like this it will generate voltage in the opposite direction from the current that it was given.
 
-This reverse voltage, sometimes called `back-voltage`, can damage your components like `transistors`. To mitigate you can put a `diode`in parallel with the motor so that `back-voltage` passes through the `diode`.
+This reverse voltage, sometimes called `back-voltage`, can damage your components like `transistors`. To mitigate, you can put a `diode` in parallel with the motor so that `back-voltage` passes through the `diode`.
 
-- Motors have an optimal operating voltage. They can work on a little as 50% of the rated voltage and as much as 50% over that number.
+- Motors have an optimal operating voltage. They can work on as little as 50% of the rated voltage and as much as 50% over that number.
 
 - If you vary the voltage of a motor, say via a potentiometer, you change the speed at which the motor rotates.
 
   - Don't vary it too much otherwise it will burn out the motor!!
 
-- Motors require special consideration when being controlled by a microconntroller. Typically the microconntroller is not able to provide the motor with sufficient current and/or voltage to power it. Because of this we use `Transistors` to interface between the motor and microconntroller (and a `Diode` to prevent `back-voltage` from damaging circuit).
+- Motors require special consideration when being controlled by a microcontroller. Typically the microcontroller is not able to provide the motor with sufficient current and/or voltage to power it. Because of this we use `Transistors` to interface between the motor and microcontroller (and a `Diode` to prevent `back-voltage` from damaging the circuit).

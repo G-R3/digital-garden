@@ -1,0 +1,37 @@
+---
+title: Dynamic programming
+description: Notes on dynamic programming
+---
+
+The idea of solving a problem by first identifying subproblems and then bringing these subproblems together to
+solve the larger problem.
+
+
+#### Longest Subsequence problem (LIS)
+Say you are given a sequence of n elements (A1, A2, A3, ...., An) and you want to find the length of the longest increasing subsequence (Ai1, Ai2, ..., Aik)
+
+An increasing subsequence is a sequence of elements where each subsequent element has both a larger value and a larger index than the previous element.
+
+constraints: i1 < i2 < i3 < ... ik; Ai1 < Ai2 < ... < Aik
+
+example: LIS([3, 1, 8, 2, 5])  --> values 1, 2, and 5 are the longest subsequence with a length of 3. 
+example: LIS([5, 2, 8, 6, 3, 6, 9, 5]) --> values 2, 3, 6, and 9 are the longest subsequence with a length of 4.
+
+1st step - visualize
+- visualize the example
+- in the examples above, given that we have some constraints, it makes sense to try and visualize what makes a valid sequence. A nice model is a `directed acyclic graph`. 
+
+Acyclic graph
+- imagine each element in a sequence is a node in a graph and we connect a directed edge from one node to another IF the node to the right contains a larger value.
+- An increasing subsequence is just another path in the graph. In fact, the longest increasing subsequence is the longest path in the directed acyclic graph + 1 because we are counting nodes.
+
+2nd step - find subproblems
+- find a subproblem. Which is just an easier version of our overall problem. This can be tricky
+- layout everything you know. in the example above, we know that:
+    1. longest increasing subsequence is going to be a particular subset of our initial sequence. 
+    2. All increasing subsequences have a start and end. One way to specify this subset is through the starting and ending points.
+
+3rd step - find relationships between subproblems
+
+
+4th step - generalize relationships

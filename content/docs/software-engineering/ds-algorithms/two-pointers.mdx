@@ -9,7 +9,7 @@ Two pointers is great for solving problems that involve linear structures like a
 the key is to recognize when to use it and how to adapt it to the shape of your problem.
 
 two pointers involves using two pointers, or indices, to move through a structure. Usually in a way to help you avoid nested loops
-or repeated scanning. Like reading a book with two fingers. One track the start of something and the other tracks the end.
+or repeated scanning. Like reading a book with two fingers. One tracks the start of something and the other tracks the end.
 
 The trick is in how they move and why.
 
@@ -32,12 +32,12 @@ One starts at the beginning and the other at the end.
 
 here is the mental model:
 
-- left pointer starts at zero. right pointer start at the last index.
+- left pointer starts at zero. right pointer starts at the last index.
 - check the current pair
 - based on some condition you move one of the pointers inwards
   - the condition is always problem specific. So it could be their sum or checking if the two characters match.
 
-Opposite ends is great with sorted arrays because each time you move a pointer you can remove an entire range of possabilities. Instead of checking all combinations, O(N^2), you're solving it in O(N).
+Opposite ends is great with sorted arrays because each time you move a pointer you can remove an entire range of possibilities. Instead of checking all combinations, O(N^2), you're solving it in O(N).
 
 #### When to use
 
@@ -51,9 +51,9 @@ Two pointers are great because they help:
 
 - reduce the number of iterations you'll need
 - track a relationship between two places in a structure
-- avoid extrac space by not needing Sets or Maps
+- avoid extra space by not needing Sets or Maps
 
-its one of a few techniques to maximize time and space complexity at once.
+It's one of a few techniques to maximize time and space complexity at once.
 
 you just need to recognize the shape of the problem
 
@@ -64,9 +64,9 @@ you just need to recognize the shape of the problem
 - merging sorted data
 - "K" sized comparisons
 
-often the problem won't say to use Two pointers but if the brute force solution is checking all pairs or scanning repeatedly. Its usually a sign that
-theres is a more efficient way.
+often the problem won't say to use Two pointers but if the brute force solution is checking all pairs or scanning repeatedly. It's usually a sign that
+there's a more efficient way.
 
-You should be asking yourself this: "Can i do this by just walking the array once from both side or in one pass?"
+You should be asking yourself this: "Can I do this by just walking the array once from both sides or in one pass?"
 
 - if yes, two pointers is probably the most efficient way to go.

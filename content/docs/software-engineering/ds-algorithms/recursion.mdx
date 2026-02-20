@@ -11,7 +11,7 @@ Example:
 function countDownFrom(num) {
   // stop condition. Without this this would run forever
   // and result in a callstack `maximum call stack size exceeded` error
-  if (num >= 1) return;
+  if (num < 1) return;
 
   console.log(num);
   countDownFrom(num - 1);
@@ -61,7 +61,7 @@ Given the categories, we want to transform the dataset to look like this:
 }
 ```
 
-A tree structure. Likes folders. We have a root folder and under thay folder we can click subfolder to reveal nested files. A hierarchy.
+A tree structure. Like folders. We have a root folder and under that folder we can click subfolders to reveal nested files. A hierarchy.
 
 This is a solution to that using recursion:
 ```js

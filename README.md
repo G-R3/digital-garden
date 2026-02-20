@@ -1,3 +1,3 @@
 # digital-garden
 
-things i'm learning, random thoughts, or stuff that I know I'll forget in the future
+things i'm learning, random thoughts, or just stuff that I know I'll forget in the future

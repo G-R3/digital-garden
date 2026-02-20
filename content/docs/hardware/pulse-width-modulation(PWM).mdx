@@ -1,20 +1,20 @@
 ---
 title: Pulse Width Modulation(PWM)
-descriptions: notes on PWM
+description: notes on PWM
 ---
 
 > Pulse-width modulation (PWM) is a technique used to control the average power delivered to a load by varying the duty cycle of a rectangular wave signal. It is commonly used in applications like motor control and LED dimming, where the average voltage and current can be adjusted by rapidly switching the power on and off. Wikipedia resources.pcb.cadence.com
 
 With an arduino microcontroller, for example, we can't vary the output voltage on its pins. It can only output 5V. So we use PWM pins to rapidly turn the output pin `HIGH` and `LOW` over a fixed period of time.
 
-change happens than the human eye can see. Its similar to how movies work by flashing a bunch of still images to create the illusion of motion.
+change happens faster than the human eye can see. It's similar to how movies work by flashing a bunch of still images to create the illusion of motion.
 
-When rapidly changing a pin from `HIGH` to `LOW` it as if we are changing the voltage.
+When rapidly changing a pin from `HIGH` to `LOW` it's as if we are changing the voltage.
 
 ## Duty Cycle
 
 The percentage of time a pin is `HIGH`
 
-When a pin is `HIGH` for half the period and `LOW` for the other half, the `duty cycle` 50%.
+When a pin is `HIGH` for half the period and `LOW` for the other half, the `duty cycle` is 50%.
 
 A lower `duty cycle` can give you a dimmer LED than a high `duty cycle`

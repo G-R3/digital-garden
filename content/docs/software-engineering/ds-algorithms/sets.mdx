@@ -3,11 +3,11 @@ title: Sets
 description: Set data structure
 ---
 
-A collection of unique values. No duplicates no particular order. A group of element where each one only appears once
+A collection of unique values. No duplicates, no particular order. A group of elements where each one only appears once
 
 ## Operations
 
-Here i'm referring to Hash Sets which are typically implemented using hash tables
+Here I'm referring to Hash Sets which are typically implemented using hash tables
 
 #### Accessing -> `O(1)`
 
@@ -26,12 +26,12 @@ Here i'm referring to Hash Sets which are typically implemented using hash table
 
 You should always use a Set instead of an Array when you care about:
 
-- Uniqueness (Like checkin for duplicates)
-- Existance (Have i seen this element before?)
+- Uniqueness (Like checking for duplicates)
+- Existence (Have I seen this element before?)
 - Fast membership check (Is this element in this group)
 
-In a problem where we scanning an array to find the first repeated element, using a Set is usually the cleanest and fastest solution
+In a problem where we're scanning an array to find the first repeated element, using a Set is usually the cleanest and fastest solution
 
-- Sliding window problems (you'd want to make sure all elements on the window are unique. In that way a set becomes a way to track whats in-play and what need to be removed)
+- Sliding window problems (you'd want to make sure all elements in the window are unique. In that way a set becomes a way to track what's in-play and what needs to be removed)
 
 Sets are NOT for storing `key: value` pairs. They are for tracking if something exists(?).

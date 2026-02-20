@@ -6,20 +6,20 @@ date: 2025-10-11
 
 Big-Oh cheat sheet: https://www.bigocheatsheet.com/
 
-Big-Oh notation is a way to categorize your algorithms on time and space complexity based on input. its not meant to be an exact
-measurement. No one will be saying something like "your algorithms is going to 100% take 450 CPU units". Its generalized way to be able to understand how a particular algorithm will react as your input grows.
+Big-Oh notation is a way to categorize your algorithms on time and space complexity based on input. It's not meant to be an exact
+measurement. No one will be saying something like "your algorithm is going to 100% take 450 CPU units". It's a generalized way to be able to understand how a particular algorithm will react as your input grows.
 
 Basically, as your input grows how fast does your computation or memory grow.
 
-So, if something is `O(N)` it means that your algorithms grows linearly with input.
+So, if something is `O(N)` it means that your algorithm grows linearly with input.
 
-- if our input grows by 50% our algorithms will be 50% slower. `O(N)`
+- if our input grows by 50% our algorithm will be 50% slower. `O(N)`
 
 Why do we use it?
 
-- it helps use make decision on why we should or should not use a particular data structure
+- it helps us make decisions on why we should or should not use a particular data structure
 
-Data strucutures have to make these constraints to make them more performant and if used incorrectly they can become unperformant.
+Data structures have to make these constraints to make them more performant and if used incorrectly they can become less performant.
 
 Easiest way to tell the big-oh of anything is to look for loops.
 
@@ -27,10 +27,10 @@ Easiest way to tell the big-oh of anything is to look for loops.
 
 1. Growth with respect to input
 2. Drop the constants
-   - we are not trying to get exact measurements. We just need to know generally know if something will halt our computers or be fast.
+   - we are not trying to get exact measurements. We just need to know generally if something will halt our computers or be fast.
 3. Always consider the worst case, usually.
 
-> Obviously in the real world, this is not a real trade off in the sense that dependingon the size of data you use, depending on how much memory you have to allocatedepending on the GC pressure, these things are not necessarily free trade offs.You can't really trade time for memory, because it takes time to create memory.So if you create a linear amount of memory in some sense your algorithm is boundby how much memory you create. So it's not necessarily for free.
+> Obviously in the real world, this is not a real trade-off in the sense that depending on the size of data you use, depending on how much memory you have to allocate, depending on the GC pressure, these things are not necessarily free trade-offs. You can't really trade time for memory, because it takes time to create memory. So if you create a linear amount of memory in some sense your algorithm is bound by how much memory you create. So it's not necessarily for free.
 
 ## Drop the constant
 
@@ -44,11 +44,11 @@ N = 10000, `O(10N)` = 100,000 `O(N^2)` = 100,000,000 // 1000x bigger
 
 for smaller input size, `O(N^2)` beats out `O(N)`. As N grows, N^2 gets massively larger and it grows disproportionately faster in comparison to no matter what constant is in front of the linear Of N.
 
-^ There are practical vs. theorritcal differences to the above.
+^ There are practical vs. theoretical differences to the above.
 
-- just because `O(N)` is faster then `O(N^2)`, doesn't mean practically its always faster for smaller inputs
+- just because `O(N)` is faster than `O(N^2)`, doesn't mean practically it's always faster for smaller inputs
 - remember we drop constant. So, `O(100N)` is faster than `O(N^2)` but practically speaking, you would probably win for some small set of inputs.
-- for example, insertion sort, which is `O(N^2)`, is faster than something like quicksort, `O(LogN), when we are dealing with smaller datasets
+- for example, insertion sort, which is `O(N^2)`, is faster than something like quicksort, `O(log N)`, when we are dealing with smaller datasets
 
 ## Consider the worst case
 
@@ -56,7 +56,7 @@ for smaller input size, `O(N^2)` beats out `O(N)`. As N grows, N^2 gets massivel
 function sumCharCode(n: string): number {
   let sum = 0;
   for (let i = 0; i < n.length; ++i) {
-    const charCode = n.chartCodeAt(i);
+    const charCode = n.charCodeAt(i);
     // Capital E
     if (charCode === 69) {
       return sum;
@@ -72,28 +72,28 @@ function sumCharCode(n: string): number {
 best case: `O(1)`
 worst case: `O(N)`
 in this example, the best case is `O(1)`. it could be that the first character in our string is a capital E. Worst case is `O(N)`. It could be that capital E is not within the string and so we would have traversed the entire string. It could be that the capital E is one unit from the end or two units from the end. This would mean `O(N-2)` but we drop constants which is just `O(N)`.
-It doesn't matter where the "E" is. The beginning, middle, end, and if its one-half-end its still N
+It doesn't matter where the "E" is. The beginning, middle, end, and if it's one step from the end it's still N
 
 ## Common complexities
 
 - `O(1)`
-  - Doesn't matter how big the input is,it does the same set of operations every single time it's instant, effectively.
-  - that constant, that's in front of the one, can be a very large number butit doesn't matter cuz it's the same constant no matter how big the input is.
+  - Doesn't matter how big the input is, it does the same set of operations every single time it's instant, effectively.
+  - that constant, that's in front of the one, can be a very large number but it doesn't matter cuz it's the same constant no matter how big the input is.
   - it does not mean we literally do one thing. It just means no matter how big the input size is, we always do constant amount of things. It does not grow with input
   - accessing a specific index in array or checking if an element exists in a Set
 - `O(logN)`
   - base log two
   - binary search
   - dividing the problem in half each time.
-  - half the amount we need to search but we only need to look at one point at a time until it eventually goes down to zero. So no traversing everytime we split N.
+  - half the amount we need to search but we only need to look at one point at a time until it eventually goes down to zero. So no traversing every time we split N.
 - `O(N)`
   - linear time
   - go through each item once
   - loops and traversing through lists.
 - `O(NlogN)`
   - typically whenever we are splitting the input
-  - quicksort. We half the amount of space we need to search but we need to search that chunk of space once everytime
-    - we go over N characters, we half how much we need look at. Then we go over those N characters, we half again. repeat.
+  - quicksort. We halve the amount of space we need to search but we need to search that chunk of space once every time
+    - we go over N characters, we halve how much we need to look at. Then we go over those N characters, we halve again. repeat.
   - almost always related to sorting and that includes the default sort methods built into most programming languages
 - `O(N^2)`
   - nested loops
@@ -111,6 +111,6 @@ There are other things that measure time complexity but they are less used.
 - Theta
 - little omega
 
-but big-oh is "upper bound". The least "upper bound" you can do.
+but big-oh is "upper bound". The tightest "upper bound" you can do.
 
 There is also space complexity
