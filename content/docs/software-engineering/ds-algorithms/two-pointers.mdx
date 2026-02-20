@@ -6,9 +6,9 @@ date: 2025-10-11
 
 Two pointers is great for solving problems that involve linear structures like arrays, strings, and even linked lists sometimes.
 
-the key is to recognize when to use it and how to adapt it to the shape of your problem.
+The key is to recognize when to use it and how to adapt it to the shape of your problem.
 
-two pointers involves using two pointers, or indices, to move through a structure. Usually in a way to help you avoid nested loops
+Two pointers involves using two pointers, or indices, to move through a structure. Usually in a way to help you avoid nested loops
 or repeated scanning. Like reading a book with two fingers. One tracks the start of something and the other tracks the end.
 
 The trick is in how they move and why.
@@ -17,7 +17,7 @@ The trick is in how they move and why.
 
 ### Same direction
 
-both pointers move in the same direction
+Both pointers move in the same direction
 
 #### When to use
 
@@ -27,10 +27,9 @@ both pointers move in the same direction
 
 ### Opposite ends
 
-pointers move towards each other from opposite ends
-One starts at the beginning and the other at the end.
+Pointers move towards each other from opposite ends. One starts at the beginning and the other at the end.
 
-here is the mental model:
+Here is the mental model:
 
 - left pointer starts at zero. right pointer starts at the last index.
 - check the current pair
@@ -55,7 +54,7 @@ Two pointers are great because they help:
 
 It's one of a few techniques to maximize time and space complexity at once.
 
-you just need to recognize the shape of the problem
+You just need to recognize the shape of the problem
 
 ## When to use
 
@@ -64,9 +63,8 @@ you just need to recognize the shape of the problem
 - merging sorted data
 - "K" sized comparisons
 
-often the problem won't say to use Two pointers but if the brute force solution is checking all pairs or scanning repeatedly. It's usually a sign that
-there's a more efficient way.
+Often the problem won't say to use two pointers, but if the brute force solution is checking all pairs or scanning repeatedly, it's usually a sign that there's a more efficient way.
 
 You should be asking yourself this: "Can I do this by just walking the array once from both sides or in one pass?"
 
-- if yes, two pointers is probably the most efficient way to go.
+- If yes, two pointers is probably the most efficient way to go.

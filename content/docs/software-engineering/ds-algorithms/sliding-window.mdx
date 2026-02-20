@@ -8,7 +8,7 @@ An extension of the two pointer technique but instead of tracking just two posit
 This range is your window. As the name suggests, you'll be sliding this range across the data structure to inspect/process different
 segments of it, without retraversing the same data over and over.
 
-imagine you have a scanner and you are dragging it across a lot of text. The scanner starts small and grows as you move forward or maybe shrinks
+Imagine you have a scanner and you are dragging it across a lot of text. The scanner starts small and grows as you move forward or maybe shrinks
 depending on what you're looking for. At any given moment, we're only interested in what's inside the window. We don't care about anything before or after it.
 
 we are looking at a subset of the data, adjusting the windows as needed, and never revisiting the same element twice. That last part, never revisiting the same element twice, is key.
@@ -46,7 +46,7 @@ Used when the problem gives you a fixed window size. Usually with language like:
 
 ### Dynamic window
 
-the window can shrink and expand as necessary. Window size is not fixed . More flexible and powerful.
+The window can shrink and expand as necessary. Window size is not fixed. More flexible and powerful.
 
 The window grows and shrinks depending on the data.
 **_We expand the window to include more elements and once the condition is violated we start to
@@ -83,7 +83,7 @@ Used when trying to find the largest, smallest, or optimal range that satisfies 
 - if a problem is asking about contiguous segments like substring, subarray, or a group of consecutive elements.
 
 
-#### Additional language I came across that hinted at sliding window
+#### Additional phrases that hint at sliding window
 - "substring"
 - "subarray"
 - "max subarray"
