@@ -1,0 +1,23 @@
+---
+title: Liquid Crystal Display
+description: LCD component
+---
+
+LCD allow us to display information via alphaneumeric characters.
+
+For these notes, I will refer to a 16 col by 2 rows Liquid Crystal Display.
+
+- come with a large number of pins for communication and power. It will know what to write to the screen but its not necessary to connect every pin available.
+
+### Pins
+
+- RS (register select) pins controls where the characters will appear on the screen
+- R/W (read/write) pins will put the screenin read or write mode
+- EN (enable) tells the LCD that it will be receiving a command
+- D0 - D7 (data pins) pins are used to send character data to the screen
+  - they tell the LCD what character should be display
+- V0 pins allows changing the contrast.
+  - you can mess around with contract by connecting it with a potentiometer
+- VSS and LED- need to be connected to ground. As well as the R/W pin as this places the screen in write mode
+- VCC (power suply) pin should be connected directly to 5V
+- LED+ pin connects to power via a 200 ohm resistor
